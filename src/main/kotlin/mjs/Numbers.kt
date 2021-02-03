@@ -1,16 +1,15 @@
 package mjs
 
-fun uniqueIds(words: Set<String>): Set<Char> {
+fun uniqueIds(words: Set<String>): Set<Char>? {
 
-    fun findUnique(word: String, otherWords: Set<String>): Char {
-
+    fun findUnique(word: String, otherWords: Set<String>): Char? {
         word.forEachIndexed { idx, ch ->
-            if (otherWords.none { other -> other.length > idx && other[idx] == ch }) {
-                return ch
-            }
+            if (otherWords.none { other -> other.length > idx && other[idx] == ch }) return ch
         }
-        return '.'
+        return null
     }
 
-    return words.map { word -> findUnique(word, words - word) }.toSet()
+    return with(words.mapNotNull { word -> findUnique(word, words - word) }) {
+        if (size == words.size) toSet() else null
+    }
 }
