@@ -1,6 +1,7 @@
 package mjs
 
 fun uniqueIds(words: Set<String>): Set<Char>? {
+    if (words.isEmpty()) return null
 
     fun findUnique(word: String, otherWords: Set<String>): Char? {
         word.forEachIndexed { idx, ch ->

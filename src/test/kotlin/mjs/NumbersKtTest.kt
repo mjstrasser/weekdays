@@ -5,7 +5,6 @@ import io.kotest.matchers.shouldBe
 
 class NumbersKtTest : DescribeSpec({
 
-
     describe("uniqueIds()") {
         describe("for simple words") {
             it("returns unique letters for one-letter words") {
@@ -18,7 +17,7 @@ class NumbersKtTest : DescribeSpec({
                 uniqueIds(setOf("ab", "ac", "ace")) shouldBe null
             }
             it("cannot find unique letters for an empty set") {
-                uniqueIds(setOf()) shouldBe setOf()
+                uniqueIds(setOf()) shouldBe null
             }
         }
         describe("for weekdays and months") {
